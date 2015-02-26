@@ -4,7 +4,8 @@
   "description": "Example following along in the PACKT MEAN Web Development",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.12.0"
+    "express": "latest",
+    "grunt": "latest"
   },
   "devDependencies": {},
   "scripts": {
