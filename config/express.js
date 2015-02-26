@@ -1,9 +1,11 @@
 var
+  config = require ('./config'),
   express = require('express'),
   morgan = require('morgan'),
   compress = require('compression'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override')
+  session = require('express-session')
 ;
 
 module.exports = function() {
@@ -21,6 +23,11 @@ module.exports = function() {
     }))
     .use(bodyParser.json())
     .use(methodOverride())
+    .use(session({
+      saveUninitialized: true,
+      resave: true,
+      secret: config.sessionSecret
+    }))
   ;
 
   app
