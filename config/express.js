@@ -15,12 +15,13 @@ module.exports = function() {
     app.use(compress());
   }
 
-  app.use(bodyParser.urlencoded({
-    extended: true
-  }));
-
-  app.use(bodyParser.json());
-  app.use(methodOverride());
+  app
+    .use(bodyParser.urlencoded({
+      extended: true
+    }))
+    .use(bodyParser.json())
+    .use(methodOverride())
+  ;
 
   require('../app/routes/index.server.routes.js')(app);
 
