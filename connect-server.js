@@ -18,6 +18,10 @@ var
   goodbyeWorld = function(req, res, next) {
     res.setHeader('Content-Type', 'text/plain');
     res.end('Goodbye, cruel world!');
+  },
+  fourOhFour = function(req, res, next) {
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('404 Page Not Found');
   }
 ;
 
@@ -27,6 +31,9 @@ app.use(logger);
 /* mount on specific paths */
 app.use('/hello', helloWorld);
 app.use('/goodbye', goodbyeWorld);
+
+/* catch-all 404 */
+app.use(fourOhFour);
 
 /* start server on port */
 app.listen(3000);
