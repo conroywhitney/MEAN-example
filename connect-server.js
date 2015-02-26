@@ -13,12 +13,20 @@ var
     res.setHeader('Content-Type', 'text/plain');
     /* it's the end() call that causes the server to return */
     res.end('Hello, world!');
+  },
+  /* another custom middleware mounted on different path */
+  goodbyeWorld = function(req, res, next) {
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Goodbye, cruel world!');
   }
 ;
 
-/* configure middleware chain */
+/* configure middleware for all paths */
 app.use(logger);
-app.use(helloWorld);
+
+/* mount on specific paths */
+app.use('/hello', helloWorld);
+app.use('/goodbye', goodbyeWorld);
 
 /* start server on port */
 app.listen(3000);
