@@ -23,6 +23,11 @@ module.exports = function() {
     .use(methodOverride())
   ;
 
+  app
+    .set('views', './app/views')
+    .set('view engine', 'ejs')
+  ;
+
   require('../app/routes/index.server.routes.js')(app);
 
   return app;
